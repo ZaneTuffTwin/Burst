@@ -1,0 +1,29 @@
+name: Build APK
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+
+      - name: Unpack Burst
+        run: |
+          base64 -d > burst.tgz <<'PACK'
+          H4sIAAAAAAAAA+w9f3PbtpL5258C0c00UqMwkvyrL6nTk2Ul1ast+0ly2l6b8dAiLPGZInUkZcfv
+          Nd/9dhcABZCgJKeJezdnzMSSiMVisVjsLhYLxnn55KuXBpT93V36hJL/pO/N3db+Tqu1v72/A8/3
+          91t7T9ju1yftyZNFkroxY0/iKEpXwa2r/z9anJeXCz/wnEnsegH/On3gBO/t7JTOf7PZVPO/t9ME
+          OWm2mvvNJ6zxdcgxy//z+Z8Hi4kfJuzfWwyK77Fn42jmuKEXR77nuPN54I/d1I/CZ+yGxwl8Yc++
+          c3ad1jOGlXfsyg0SvvVp668eyGP5rOK8hGn8yjbgHvpfrv/GbqP5qP8fooj5/7o2YJ3+32vs5fX/
